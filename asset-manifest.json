@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/gameapp/static/css/main.eb411704.css",
+    "main.js": "/gameapp/static/js/main.c3db38c7.js",
+    "static/media/rockpaperscissors.png": "/gameapp/static/media/rockpaperscissors.076021a72c840f49d610.png",
+    "static/media/dice.png": "/gameapp/static/media/dice.00b0ed812c675daa234d.png",
+    "static/media/secretnumber.png": "/gameapp/static/media/secretnumber.f54453b2e050e4a3d329.png",
+    "index.html": "/gameapp/index.html",
+    "main.eb411704.css.map": "/gameapp/static/css/main.eb411704.css.map",
+    "main.c3db38c7.js.map": "/gameapp/static/js/main.c3db38c7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb411704.css",
+    "static/js/main.c3db38c7.js"
+  ]
+}
