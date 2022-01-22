@@ -1,0 +1,250 @@
+@import "../CSS/variables";
+
+header {
+	background: $componentColor;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 12px;
+	width: 100%;
+	max-width: 300px;
+	max-height: 350px;
+	color: $textColor;
+	opacity: 0;
+	animation: fade 1s;
+	animation-fill-mode: forwards;
+	@include flex(flex, column, space-between, center);
+
+	.balance-info {
+		padding-bottom: 5px;
+		border-bottom: 2px solid transparent;
+		border-color: $textColor;
+		width: 100%;
+		@include flex(flex, row, space-between, center);
+
+		.icons {
+			i {
+				padding-left: 2px;
+				padding-right: 2px;
+				margin: 0px 2px;
+				font-size: 20px;
+				color: $textColor;
+				cursor: pointer;
+				transition: 0.5s opacity;
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+
+	.games-list {
+		@include flex(flex, row, space-between, center);
+		width: 100%;
+		margin-top: 10px;
+
+		.game-selector {
+			width: 65px;
+			height: 65px;
+			border-radius: 10px;
+			background: $textColor;
+			position: relative;
+			overflow: hidden;
+			border: 1px solid $textColor;
+
+			a {
+				background: $textColor;
+				text-decoration: none;
+				color: $componentColor;
+				border-radius: 10px;
+				cursor: pointer;
+				transition: 0.4s;
+				position: absolute;
+				bottom: -25px;
+				right: 7px;
+				outline: none;
+				border: none;
+				visibility: hidden;
+				padding: 2px 10px 2px 10px;
+				opacity: 0;
+
+				&:hover {
+					transform: scale(1.1);
+				}
+			}
+			&:hover a {
+				transition: 0.4s;
+				bottom: 5px;
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+		.rollTheDice {
+			background: transparent;
+			box-shadow: 0px 0px 5px 1px $textColor;
+			transition: 0.3s;
+			&:hover {
+				box-shadow: 0px 0px 7px 2px $textColor;
+			}
+			img {
+				width: 100%;
+			}
+		}
+
+		.rockpaperscissors {
+			background: transparent;
+			box-shadow: 0px 0px 5px 1px $textColor;
+			transition: 0.3s;
+
+			&:hover {
+				box-shadow: 0px 0px 7px 2px $textColor;
+			}
+			img {
+				width: 100%;
+			}
+		}
+
+		.secretnumber {
+			background: transparent;
+			box-shadow: 0px 0px 5px 1px $textColor;
+			transition: 0.3s;
+
+			&:hover {
+				box-shadow: 0px 0px 7px 2px $textColor;
+			}
+			img {
+				width: 100%;
+			}
+		}
+		.funds-tooltip {
+			transform: scale(0);
+			color: $componentColor;
+			border-radius: 10px;
+			opacity: 0;
+			background: $textColor;
+			transition: 0.3s;
+			right: 0px;
+			transform-origin: center;
+		}
+	}
+
+	@media all and (min-width: 650px) and (min-height: 785px) {
+		padding: 25px;
+		max-width: 500px !important;
+		.balance-info {
+			h3 {
+				font-size: 17px;
+			}
+			padding-bottom: 8px !important;
+			.icons {
+				i {
+					font-size: 25px !important;
+				}
+			}
+		}
+		.games-list {
+			margin-top: 20px !important;
+			.game-selector {
+				width: 100px !important;
+				height: 100px !important;
+				a {
+					font-size: 16px !important;
+					right: 20px !important;
+				}
+			}
+		}
+
+		.unavailable {
+			padding: 5px;
+
+			&:hover {
+				.funds-tooltip {
+					position: absolute;
+					transition: 0.3s;
+					opacity: 1;
+					text-align: center;
+					font-size: 12px;
+					right: 0px;
+					transform: scale(1);
+				}
+			}
+		}
+	}
+
+	@media all and (min-width: 1150px) and (min-height: 785px) {
+		max-width: 650px !important;
+		.balance-info {
+			h3 {
+				font-size: 22px;
+			}
+			padding-bottom: 10px !important;
+			.icons {
+				i {
+					font-size: 30px !important;
+				}
+			}
+		}
+		.games-list {
+			margin-top: 20px !important;
+
+			.game-selector {
+				width: 130px !important;
+				height: 130px !important;
+				a {
+					font-size: 20px !important;
+					right: 35px !important;
+				}
+			}
+		}
+
+		.unavailable {
+			padding: 5px;
+			&:hover {
+				.funds-tooltip {
+					position: absolute;
+					visibility: visible !important;
+					transition: 0.3s;
+					top: 30px;
+					opacity: 1;
+					text-align: center;
+					font-size: 14px;
+					padding: 5px;
+					right: 2px;
+				}
+			}
+		}
+	}
+}
+
+.unavailable {
+	cursor: not-allowed;
+	opacity: 0.55;
+	box-shadow: none !important;
+
+	a {
+		visibility: hidden !important;
+	}
+	&:hover {
+		transition: 0.3s;
+
+		.funds-tooltip {
+			position: absolute;
+			opacity: 1;
+			text-align: center;
+			font-size: 10px;
+			transform-origin: center;
+			transform: scale(1);
+			right: 0px;
+		}
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+		transition: 1s all;
+	}
+	100% {
+		opacity: 1;
+		transition: 1s all;
+	}
+}

@@ -1,0 +1,229 @@
+.rollTheDice-wrapper {
+	background: $componentColor;
+	color: $textColor;
+	border-radius: 10px;
+	width: 100%;
+	@include flex(flex, column, space-evenly, center);
+	text-align: center;
+	padding: 5px;
+	max-width: 300px;
+	height: 450px;
+	opacity: 0;
+	animation: fade 1s;
+	animation-fill-mode: forwards;
+
+	.score-div {
+		@include flex(flex, row, space-evenly, center);
+		width: 70%;
+		border-bottom: 1px solid $textColor;
+		padding-bottom: 10px;
+	}
+
+	.difficulty-div {
+		@include flex(flex, row, space-evenly, center);
+		width: 100%;
+		position: relative;
+
+		.difficulty-info {
+			background: $textColor;
+			color: $componentColor;
+			position: absolute;
+			@include flex(flex, column, space-evenly, center);
+			width: 100%;
+			padding: 10px;
+			height: 300px;
+			z-index: 100;
+			border-radius: 10px;
+			margin-top: 4.5em;
+			transition: 0.5s;
+			transform: scale(0);
+
+			small {
+				margin: 0px 0px 0px 5px;
+				align-self: flex-start;
+				text-align: center;
+			}
+			h5 {
+				font-size: 15px;
+				letter-spacing: 0.5px;
+				border-bottom: 1px solid $componentColor;
+			}
+			.x {
+				position: absolute;
+				top: 0;
+				right: 0;
+				margin: 5px 5px;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				transition: 0.5s;
+
+				&:hover {
+					cursor: pointer;
+					background: rgba(255, 0, 0, 0.719);
+					transform: scale(1);
+				}
+			}
+		}
+		a {
+			transition: 0.4s;
+
+			&:hover {
+				opacity: 0.5;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.displayed-results {
+		h4 {
+			padding-bottom: 10px;
+		}
+		i {
+			font-size: 25px;
+		}
+	}
+
+	#rollBtn {
+		width: 100px;
+		outline: none;
+		border: none;
+		background: $textColor;
+		color: $componentColor;
+		border-radius: 10px;
+		margin: 5px;
+		padding: 6px 10px;
+		font-size: 14px;
+		transition: 0.3s all;
+		&:hover {
+			cursor: pointer;
+			opacity: 0.8;
+		}
+	}
+}
+
+@media all and (min-width: 650px) and (min-height: 785px) {
+	.rollTheDice-wrapper {
+		max-width: 500px !important;
+		h3 {
+			font-size: 22px;
+		}
+		h4 {
+			font-size: 20px;
+		}
+		h5 {
+			font-size: 18px;
+		}
+
+		.displayed-results {
+			i {
+				font-size: 30px;
+			}
+		}
+
+		#rollBtn {
+			width: 150px;
+			font-size: 18px;
+		}
+	}
+}
+
+@media all and (min-width: 1150px) and (min-height: 785px) {
+	.rollTheDice-wrapper {
+		max-width: 650px !important;
+		height: 550px !important;
+
+		h3 {
+			font-size: 24px;
+		}
+		h4 {
+			font-size: 22px;
+		}
+		h5 {
+			font-size: 20px;
+		}
+		.difficulty-div {
+			.difficulty-info {
+				background: $textColor;
+				color: $componentColor;
+				position: absolute;
+				@include flex(flex, column, space-evenly, center);
+				width: 100%;
+				padding: 10px;
+				height: 380px;
+				z-index: 100;
+				border-radius: 10px;
+				margin-top: 4em;
+				transition: 0.5s;
+				transform: scale(0);
+
+				small {
+					margin: 0px 0px 0px 5px;
+					align-self: center;
+					text-align: center;
+					font-size: 16px;
+				}
+				h5 {
+					font-size: 18px;
+					letter-spacing: 0.5px;
+					border-bottom: 1px solid $componentColor;
+				}
+				.x {
+					position: absolute;
+					top: 0;
+					right: 0;
+					margin: 5px 5px;
+					width: 40px;
+					height: 40px;
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 50%;
+					transition: 0.5s;
+					i {
+						font-size: 25px;
+					}
+
+					&:hover {
+						cursor: pointer;
+						background: rgba(255, 0, 0, 0.719);
+						transform: scale(1);
+					}
+				}
+			}
+		}
+		#rollBtn {
+			width: 200px;
+			font-size: 20px;
+		}
+
+		.displayed-results {
+			i {
+				font-size: 35px;
+			}
+		}
+		.buttons-div {
+			width: 70%;
+			button {
+				width: 180px;
+				font-size: 15px;
+				padding: 15px;
+			}
+		}
+	}
+}
+@keyframes fade {
+	0% {
+		opacity: 0;
+		transition: 1s all;
+	}
+	100% {
+		opacity: 1;
+		transition: 1s all;
+	}
+}

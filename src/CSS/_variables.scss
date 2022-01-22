@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+$font: "Poppins", sans-serif;
+
+//Light Mode
+$backgroundColor: #d1d8e0;
+$componentColor: #ecf0f1;
+$textColor: #2c3e50;
+
+//Dark Mode
+$backgroundColorDark: #8395a7;
+$componentColorDark: #2c3e50;
+$textColorDark: #ecf0f1;
+
+@mixin flex($display, $direction, $justify, $align) {
+	display: $display;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}

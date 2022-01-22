@@ -1,0 +1,25 @@
+@import "../CSS/header", "../CSS/rollTheDice", "../CSS/rockPaperScissors",
+	"../CSS/secretNumber", "../CSS/variables", "../CSS/info", "./cheater",
+	"./debug";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: $font;
+	transition: 0.5s background;
+}
+
+#content {
+	background: $backgroundColor;
+	height: 100vh;
+	@include flex(flex, column, center, center);
+	padding: 15px;
+	gap: 1em;
+	width: 100%;
+	transition: 0.8s filter;
+}
+
+.dark {
+	filter: invert(1) hue-rotate(180deg);
+	transition: 0.8s;
+}

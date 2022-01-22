@@ -1,0 +1,117 @@
+.debug-div {
+	background: $componentColor;
+	color: $textColor;
+	border-radius: 10px;
+	width: 100%;
+	@include flex(flex, column, space-evenly, center);
+	text-align: center;
+	padding: 5px;
+	max-width: 300px;
+	height: 450px;
+	opacity: 0;
+	transition: 0.3s all;
+	animation: fade 1s;
+	animation-fill-mode: forwards;
+
+	h4 {
+		font-size: 14px;
+	}
+	small {
+		font-size: 11px;
+	}
+	button {
+		border-radius: 10px;
+		font-size: 10px;
+		margin: 2px 2px 2px 2px;
+		outline: none;
+		border: none;
+		background-color: $textColor;
+		color: $componentColor;
+		transition: 0.3s;
+
+		&:not(.switch) {
+			padding: 3px 5px;
+		}
+
+		&:hover {
+			opacity: 0.6;
+			cursor: pointer;
+		}
+	}
+	.resetCoins,
+	.maxCoins {
+		width: 58px;
+	}
+}
+
+@media all and (min-width: 650px) and (min-height: 785px) {
+	.debug-div {
+		max-width: 500px !important;
+
+		h4 {
+			font-size: 22px;
+		}
+		h5 {
+			font-size: 18px;
+		}
+		small {
+			font-size: 16px;
+		}
+		button {
+			font-size: 14px;
+			width: 100px !important;
+			margin: 5px;
+
+			&:not(.switch) {
+				padding: 5px;
+			}
+		}
+		button.switch {
+			width: 50px !important;
+		}
+	}
+}
+
+@media all and (min-width: 1150px) and (min-height: 785px) {
+	.debug-div {
+		max-width: 650px !important;
+		height: 550px !important;
+
+		h4 {
+			font-size: 24px;
+		}
+		h5 {
+			font-size: 20px;
+		}
+		small {
+			font-size: 18px;
+		}
+		button {
+			font-size: 14px;
+			width: 100px !important;
+		}
+		button.switch {
+			width: 50px !important;
+		}
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+		transition: 1s all;
+	}
+	100% {
+		opacity: 1;
+		transition: 1s all;
+	}
+}
+
+button.active {
+	background-color: #00ff00;
+	color: black;
+}
+button.inactive {
+	background-color: red;
+	color: white;
+}

@@ -1,70 +1,168 @@
-# Getting Started with Create React App
+# Game-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### React & Redux web application (with Debug commands)!
 
-## Available Scripts
+##### A web application with 7 components which consists of playing and unlocking every game.
 
-In the project directory, you can run:
+The application has two main features, besides the journey to unlock every game.
 
-### `npm start`
+- Dark Mode
+- Debug tool for testing purposes (May cause minor issues)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project has been created using Visual Studio Code with the following technologies:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ReactJS (with JSX)
+- CSS / SASS
+- Redux State Management
 
-### `npm test`
+###### Browser compatibility:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Google Chrome
 
-### `npm run build`
+-Mozila Firefox
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Microsoft Edge
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Opera
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-Safari
 
-### `npm run eject`
+## ReactJS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React Hooks
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+//useState hook
+const [lightMode, setLightMode] = useState(true);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+//useEffect hook
+useEffect(() => {
+	updateDifficulty();
+	return () => {};
+}, [balanceCoins]);
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React Router
 
-## Learn More
+```javascript
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<Router>
+	<Header></Header>
+	<Routes>
+		<Route exact path="/RollTheDice" element={<RollTheDice />}></Route>
+		<Route exact path="/secretnumber" element={<SecretNumber />}></Route>
+		...etc
+		<Route exact path="/" element={<Info />}></Route>
+	</Routes>
+</Router>;
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```javascript
+import { Link } from "react-router-dom";
 
-### Code Splitting
+<Link
+	to={balanceCoins >= 10 ? "/SecretNumber" : "/cheater"}
+	onClick={() => {
+		if (balanceCoins >= 10 && !SECRETNUMBER_GAMESTATE) {
+			dispatch(actions.decrease(10));
+			dispatch(actions.SECRETNUMBER_GAMESTATE_ON());
+			dispatch(actions.randomize(secretNumber));
+			dispatch(actions.resetSecretNumberAttempts());
+			dispatch(actions.ROCKPAPERSCISSORS_GAMESTATE_OFF());
+			dispatch(actions.ROCKPAPERSCISSORS_ROUNDSTATE_OFF());
+			dispatch(actions.displayedMessage(" "));
+		}
+	}}
+>
+	Play
+</Link>;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```javascript
+import { useNavigate } from "react-router-dom";
 
-### Analyzing the Bundle Size
+//useNavigate
+	let navigate = useNavigate();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    onClick={() => {
+	...somecode
+		if (balanceCoins < 30) {
+		navigate("/cheater");
+		} else {
+         ...some code
+         }
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
 
-### Advanced Configuration
+## Redux
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Actions / Reducers
 
-### Deployment
+```javascript
+//Action
+export const secretNumberHintOn = () => {
+	return {
+		type: "TURN_HINT_ON",
+	};
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+//Reducer
+const secretNumberHint = (state = false, action) => {
+	switch (action.type) {
+		case "TURN_HINT_ON":
+			return (state = true);
+		case "TURN_HINT_OFF":
+			return (state = false);
+		default:
+			return state;
+	}
+};
 
-### `npm run build` fails to minify
+//Combine Reducers
+import { combineReducers } from "redux";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+const allReducers = combineReducers({
+	balanceCoins: coins,
+	...etc,
+	secretNumberHint: secretNumberHint,
+});
+
+export default allReducers;
+```
+
+##
+
+- Store
+
+```javascript
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+let myStore = createStore(allReducers);
+
+ReactDOM.render(
+	<React.StrictMode>
+		<Provider store={myStore}>
+			<App />
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById("content")
+);
+```
+
+- Redux Hooks
+
+```javascript
+import { useSelector, useDispatch } from "react-redux";
+
+//useSelector
+const secretNumberHint = useSelector((state) => state.secretNumberHint);
+
+//useDispatch
+const dispatch = useDispatch();
+
+dispatch(actions.SECRETNUMBER_GAMESTATE_OFF());
+dispatch(actions.randomizeCpuChoice(Math.floor(Math.random() * 3) + 1));
+```

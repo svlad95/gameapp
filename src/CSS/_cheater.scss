@@ -1,0 +1,63 @@
+.cheat-message {
+	background: $componentColor;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 12px;
+	width: 100%;
+	max-width: 300px;
+	height: 450px;
+	color: $textColor;
+	@include flex(flex, column, space-evenly, center);
+	text-align: center;
+	opacity: 0;
+	animation: fade 1s;
+	animation-fill-mode: forwards;
+
+	h2 {
+		font-size: 24px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	span {
+		color: red;
+	}
+}
+
+@media all and (min-width: 650px) and (min-height: 785px) {
+	.cheat-message {
+		max-width: 500px !important;
+
+		h2 {
+			font-size: 26px;
+		}
+		h3 {
+			font-size: 22px;
+		}
+	}
+}
+
+@media all and (min-width: 1150px) and (min-height: 785px) {
+	.cheat-message {
+		max-width: 650px !important;
+		height: 550px !important;
+
+		h2 {
+			font-size: 32px;
+		}
+		h3 {
+			font-size: 26px;
+		}
+	}
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+		transition: 1s all;
+	}
+	100% {
+		opacity: 1;
+		transition: 1s all;
+	}
+}
