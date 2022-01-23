@@ -50,10 +50,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 <Router>
 	<Header></Header>
 	<Routes>
-		<Route exact path="/RollTheDice" element={<RollTheDice />}></Route>
-		<Route exact path="/secretnumber" element={<SecretNumber />}></Route>
+		<Route exact path="/gameapp/RollTheDice" element={<RollTheDice />}></Route>
+		<Route
+			exact
+			path="/gameapp/secretnumber"
+			element={<SecretNumber />}
+		></Route>
 		...etc
-		<Route exact path="/" element={<Info />}></Route>
+		<Route exact path="/gameapp" element={<Info />}></Route>
 	</Routes>
 </Router>;
 ```

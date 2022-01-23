@@ -31,7 +31,7 @@ function Header() {
 
 					<div className="icons">
 						<Link
-							to="/"
+							to="/gameapp"
 							onClick={() => {
 								dispatch(actions.SECRETNUMBER_GAMESTATE_OFF());
 								dispatch(actions.ROCKPAPERSCISSORS_GAMESTATE_OFF());
@@ -42,7 +42,7 @@ function Header() {
 							<i className="fas fa-info-circle"></i>
 						</Link>
 						<Link
-							to="/debug"
+							to="/gameapp/debug"
 							onClick={() => {
 								dispatch(actions.SECRETNUMBER_GAMESTATE_OFF());
 								dispatch(actions.ROCKPAPERSCISSORS_GAMESTATE_OFF());
@@ -74,7 +74,7 @@ function Header() {
 					<div className="game-selector rollTheDice">
 						<img src={dicePng} alt="" />
 						<Link
-							to="/RollTheDice"
+							to="/gameapp/RollTheDice"
 							onClick={() => {
 								dispatch(actions.SECRETNUMBER_GAMESTATE_OFF());
 								dispatch(actions.ROCKPAPERSCISSORS_GAMESTATE_OFF());
@@ -94,7 +94,11 @@ function Header() {
 					>
 						<img src={secretnumberPng} alt="" />
 						<Link
-							to={balanceCoins >= 10 ? "/SecretNumber" : "/cheater"}
+							to={
+								balanceCoins >= 10
+									? "/gameapp/SecretNumber"
+									: "/gameapp/cheater"
+							}
 							onClick={() => {
 								if (balanceCoins >= 10 && !SECRETNUMBER_GAMESTATE) {
 									dispatch(actions.decrease(10));
@@ -120,7 +124,11 @@ function Header() {
 					>
 						<img src={rockpaperscissorsPng} alt="" />
 						<Link
-							to={balanceCoins >= 30 ? "/RockPaperScissors" : "/cheater"}
+							to={
+								balanceCoins >= 30
+									? "/gameapp/RockPaperScissors"
+									: "/gameapp/cheater"
+							}
 							onClick={() => {
 								if (balanceCoins >= 30 && !ROCKPAPERSCISSORS_GAMESTATE) {
 									dispatch(actions.decrease(30));

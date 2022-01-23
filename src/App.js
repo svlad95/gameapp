@@ -15,16 +15,28 @@ function App() {
 			<Router>
 				<Header></Header>
 				<Routes>
-					<Route exact path="/RollTheDice" element={<RollTheDice />}></Route>
-					<Route exact path="/secretnumber" element={<SecretNumber />}></Route>
-					<Route exact path="/cheater" element={<CheatMessage />}></Route>
 					<Route
 						exact
-						path="/RockPaperScissors"
+						path="/gameapp/RollTheDice"
+						element={<RollTheDice />}
+					></Route>
+					<Route
+						exact
+						path="/gameapp/SecretNumber"
+						element={<SecretNumber />}
+					></Route>
+					<Route
+						exact
+						path="/gameapp/cheater"
+						element={<CheatMessage />}
+					></Route>
+					<Route
+						exact
+						path="/gameapp/RockPaperScissors"
 						element={<RockPaperScissors />}
 					></Route>
-					<Route exact path="/debug" element={<Debug></Debug>}></Route>
-					<Route exact path="/" element={<Info />}></Route>
+					<Route exact path="/gameapp/debug" element={<Debug></Debug>}></Route>
+					<Route exact path="/gameapp" element={<Info />}></Route>
 				</Routes>
 			</Router>
 		</>

@@ -184,7 +184,7 @@ function RockPaperScissors() {
 					onClick={() => {
 						if (!ROCKPAPERSCISSORS_ROUNDSTATE) {
 							if (balanceCoins < 30) {
-								navigate("/cheater");
+								navigate("/gameapp/cheater");
 							} else {
 								const playAgainBtn = document.querySelector(".select-play-btn");
 								playAgainBtn.className = "select-play-btn inactive";
@@ -210,7 +210,7 @@ function RockPaperScissors() {
 					onClick={() => {
 						if (balanceCoins >= 30) {
 							if (ROCKPAPERSCISSORS_GAMESTATE) {
-								// navigate("/RockPaperScissors")
+								// navigate("/gameapp/RockPaperScissors")
 								const playAgainBtn = document.querySelector(".play-again-btn");
 								playAgainBtn.className = "play-again-btn inactive";
 							} else {
@@ -234,7 +234,7 @@ function RockPaperScissors() {
 							}
 						} else {
 							if (balanceCoins < 30 && ROCKPAPERSCISSORS_GAMESTATE) {
-								navigate("/cheater");
+								navigate("/gameapp/cheater");
 							} else {
 								dispatch(actions.ROCKPAPERSCISSORS_GAMESTATE_OFF());
 								const play_again_btn =

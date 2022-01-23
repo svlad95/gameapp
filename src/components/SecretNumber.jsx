@@ -39,7 +39,7 @@ function SecretNumber() {
 
 		if (!SECRETNUMBER_GAMESTATE) {
 			if (balanceCoins < 10) {
-				navigate("/cheater");
+				navigate("/gameapp/cheater");
 			} else {
 				const guessBtn = document.getElementById("guessButton");
 				guessBtn.className = "guess-btn inactive";
@@ -152,7 +152,7 @@ function SecretNumber() {
 						const play_again_btn = document.querySelector(".play-again-btn");
 						if (balanceCoins >= 10) {
 							if (SECRETNUMBER_GAMESTATE) {
-								// navigate("/SecretNumber");
+								// navigate("/gameapp/SecretNumber");
 								play_again_btn.classList.add("inactive");
 							} else {
 								dispatch(actions.decrease(10));
@@ -164,7 +164,7 @@ function SecretNumber() {
 							}
 						} else {
 							if (balanceCoins < 10 && SECRETNUMBER_GAMESTATE) {
-								navigate("/cheater");
+								navigate("/gameapp/cheater");
 							} else {
 								dispatch(actions.SECRETNUMBER_GAMESTATE_OFF());
 
