@@ -253,20 +253,17 @@ header .games-list .funds-tooltip {
     font-size: 20px !important;
     right: 35px !important;
   }
-  header .unavailable {
-    padding: 5px;
-  }
   header .unavailable:hover .funds-tooltip {
     position: absolute;
     visibility: visible !important;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    top: 30px;
+    top: 50px;
     opacity: 1;
     text-align: center;
     font-size: 14px;
-    padding: 5px;
     right: 2px;
+    padding: 0px 5px;
   }
 }
 
